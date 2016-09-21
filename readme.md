@@ -10,7 +10,9 @@ This script assumes you are running `zsh` as your shell because it utilizes the 
 This is a big assumption. If happy to change it if you have any ideas.
 
 ### ImageMagick
-This script required installing the ImageMagick CLI. You can get it here:
+This script requires installing the ImageMagick CLI. 
+
+You can get it here:
 [http://www.imagemagick.org/](http://www.imagemagick.org/)
 
 
