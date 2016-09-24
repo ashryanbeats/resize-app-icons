@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ command -v convert >/dev/null 2>&1 ]
+if [ -n convert ]
 then
   echo "ImageMagick detected. Here we go..."
 else
@@ -9,12 +9,17 @@ else
   exit 1
 fi
 
-if [ -z "$1" ] # if arg 1 is a null string
+if [ "$1" != "" ] # check if arg 1 is present
 then
-  echo "Please provide a source image:"
-  vared FILE #vared allows automplete in zsh
-else
   FILE=$1
+else
+  echo "Please provide a file as an argument."
+  exit 1  
+fi
+
+if [ ! -d "resized" ]
+then
+  mkdir resized
 fi
 
 echo "Resizing $FILE..."
