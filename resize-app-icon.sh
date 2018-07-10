@@ -14,8 +14,10 @@ then
   FILE=$1
 else
   echo "Please provide a file as an argument."
-  exit 1  
+  exit 1
 fi
+
+filename="${FILE%%.*}"
 
 if [ ! -d "resized" ]
 then
@@ -24,14 +26,19 @@ fi
 
 echo "Resizing $FILE..."
 
-convert $FILE -resize 54x40! resized/Icon-App-27x20@2x.png #Messages
-convert $FILE -resize 81x60! resized/Icon-App-27x20@3x.png #Messages
-convert $FILE -resize 64x48! resized/Icon-App-32x24@2x.png #Messages
-convert $FILE -resize 96x72! resized/Icon-App-32x24@3x.png #Messages
-convert $FILE -resize 120x90! resized/Icon-App-60x45@2x.png #iPhone
-convert $FILE -resize 180x135! resized/Icon-App-60x45@3x.png #iPhone
-convert $FILE -resize 134x100! resized/Icon-App-67x50@2x.png #iPad
-convert $FILE -resize 148x110! resized/Icon-App-74x55@2x.png #iPad Pro
-convert $FILE -resize 1024x768! resized/Icon-App-1024x768.png #Messages App Store
+convert $FILE -resize 180x180! resized/${filename}-60x60@3x.png
+convert $FILE -resize 120x120! resized/${filename}-60x60@2x.png
+convert $FILE -resize 167x167! resized/${filename}-83.5x83.5@2x.png
+convert $FILE -resize 76x76! resized/${filename}-76x76@1x.png
 
-exit 0
+convert $FILE -resize 152x152! resized/${filename}-76x76@2x.png
+convert $FILE -resize 1024x1024! resized/${filename}-1024x1024@1x.png
+convert $FILE -resize 120x120! resized/${filename}-40x40@3x.png
+convert $FILE -resize 80x80! resized/${filename}-40x40@2x.png
+convert $FILE -resize 40x40! resized/${filename}-40x40@1x.png
+convert $FILE -resize 87x87! resized/${filename}-29x29@3x.png
+convert $FILE -resize 58x58! resized/${filename}-29x29@2x.png
+convert $FILE -resize 29x29! resized/${filename}-29x29@1x.png
+convert $FILE -resize 60x60! resized/${filename}-20x20@3x.png
+convert $FILE -resize 40x40! resized/${filename}-20x20@2x.png
+convert $FILE -resize 20x20! resized/${filename}-20x20@1x.png
